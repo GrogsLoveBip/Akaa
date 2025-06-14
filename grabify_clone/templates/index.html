@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Logs de Acesso</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; background: #f4f4f4; }
+        table { width: 100%; border-collapse: collapse; background: white; }
+        th, td { border: 1px solid #ddd; padding: 8px; font-size: 14px; }
+        th { background: #333; color: white; }
+        tr:nth-child(even) { background: #f9f9f9; }
+    </style>
+</head>
+<body>
+    <h1>📊 Logs de Acesso</h1>
+    <table>
+        <tr>
+            <th>Data/Hora</th>
+            <th>IP</th>
+            <th>Localização</th>
+            <th>ISP</th>
+            <th>User-Agent</th>
+        </tr>
+        {% for log in logs %}
+        <tr>
+            <td>{{ log.timestamp }}</td>
+            <td>{{ log.ip }}</td>
+            <td>{{ log.location.city }}, {{ log.location.region }}, {{ log.location.country }}</td>
+            <td>{{ log.location.isp }}</td>
+            <td>{{ log.user_agent }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
